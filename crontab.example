@@ -1,0 +1,50 @@
+# Twitter 爆款监控 - 定时任务配置
+# 使用方法: crontab -e 添加以下内容
+
+# 每天早上 9 点执行监控
+0 9 * * * cd /Users/wangziyi/Desktop/lujing && bun run src/index.ts monitor >> logs/monitor.log 2>&1
+
+# 每 6 小时执行一次（可选）
+# 0 */6 * * * cd /Users/wangziyi/Desktop/lujing && bun run src/index.ts monitor >> logs/monitor.log 2>&1
+
+# 每小时执行一次（高频监控，慎用）
+# 0 * * * * cd /Users/wangziyi/Desktop/lujing && bun run src/index.ts monitor >> logs/monitor.log 2>&1
+
+# ===== 使用 macOS launchd (推荐) =====
+# 将以下内容保存到 ~/Library/LaunchAgents/com.twitter.viral-monitor.plist
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.twitter.viral-monitor</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/bun</string>
+        <string>run</string>
+        <string>/Users/wangziyi/Desktop/lujing/src/index.ts</string>
+        <string>monitor</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/wangziyi/Desktop/lujing</string>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/Users/wangziyi/Desktop/lujing/logs/monitor.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/wangziyi/Desktop/lujing/logs/monitor.error.log</string>
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
+
+# 启动 launchd 服务:
+# launchctl load ~/Library/LaunchAgents/com.twitter.viral-monitor.plist
+# 卸载服务:
+# launchctl unload ~/Library/LaunchAgents/com.twitter.viral-monitor.plist

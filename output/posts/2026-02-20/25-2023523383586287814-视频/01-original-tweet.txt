@@ -1,0 +1,19 @@
+🦞 TECH BREAKDOWN: How $clawpad Works
+
+Everything you need to know about OpenClaw Pad's AI architecture:
+
+🧠 How we query Solana RPC directly
+🤖 Claude Sonnet 4 integration
+🎨 Nano Banana Pro image pipeline
+📊 Real-time bonding curve decoding
+🚀 PumpPortal transaction building https://t.co/TQnETQ2nsG
+
+Author: Open Claw Pad 🦞 (@OpenClawPad)
+Created: Mon Feb 16 22:22:24 +0000 2026
+Link: https://x.com/i/status/2023523383586287814
+
+Views: 178
+Likes: 1
+Has Video: true
+Has Images: false (0 images)
+Images: None

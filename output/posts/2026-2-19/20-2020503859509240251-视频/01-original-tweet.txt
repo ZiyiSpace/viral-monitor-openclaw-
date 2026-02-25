@@ -1,0 +1,14 @@
+Just built ClawMission 🦞
+
+It’s a Mission Control for my autonomous AI agent (OpenClaw). Connects via WebSocket to visualize the "brain" thinking in real-time.
+
+No more boring terminal logs. The Lobster is alive.
+
+#AI #OpenClaw #BuildInPublic https://t.co/TO3ZS2NNNP
+
+Author: Ian Goh (@IanG0h)
+Created: Sun Feb 08 14:23:53 +0000 2026
+Views: 5,921
+Likes: 38
+Has Video: true
+Link: https://x.com/i/status/2020503859509240251

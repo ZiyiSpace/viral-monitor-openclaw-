@@ -1,0 +1,13 @@
+The great thing about building on top of the Base44 Backend Platform is that you can now make any AI Agent you use into an app builder. So here's my personal #OpenClaw building an app for me straight out of Whatsapp.
+
+All it needs to become an app builder is access the Base44 https://t.co/VGUSgrgO1i
+
+Author: Netanel Gilad (@netanelgilad)
+Created: Mon Feb 09 16:02:38 +0000 2026
+Link: https://x.com/i/status/2020891096360915319
+
+Views: 15,594
+Likes: 73
+Has Video: true
+Has Images: false (0 images)
+Images: None

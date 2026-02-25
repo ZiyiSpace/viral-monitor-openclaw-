@@ -1,0 +1,11 @@
+#PicoClaw: AI built the code in hours, matching #OpenClaw’s core features with only 1% code and 1% memory!
+Ditch your Mac Mini—now you can run a full AI assistant on $10 RISCV hardware with 10MB RAM~
+If it runs Linux, it can now be your personal AI Agent!
+https://t.co/OF6rG9kgev https://t.co/iXAczSl7VN
+
+Author: Sipeed (@SipeedIO)
+Created: Mon Feb 09 12:08:58 +0000 2026
+Views: 587,595
+Likes: 4035
+Has Video: false
+Link: https://x.com/i/status/2020832292885930288

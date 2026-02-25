@@ -1,0 +1,12 @@
+{
+  "source_language": "en",
+  "target_language": "zh",
+  "terminology_file": "terminology.txt",
+  "video_dirs": [],
+  "output_dir": "./output/translated-videos",
+  "settings": {
+    "voice_type": "auto",
+    "subtitle_style": "netflix",
+    "preserve_terminology": true
+  }
+}

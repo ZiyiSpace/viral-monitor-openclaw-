@@ -1,0 +1,33 @@
+{
+  "keywords": ["openclaw", "open claw", "#openclaw"],
+  "platforms": {
+    "twitter": {
+      "enabled": true,
+      "maxResults": 200
+    },
+    "reddit": {
+      "enabled": true,
+      "subreddits": ["all", "technology", "cryptocurrency"],
+      "maxResults": 100,
+      "viralThresholds": {
+        "minUpvotes": 100,
+        "minComments": 20
+      }
+    },
+    "discord": {
+      "enabled": false,
+      "channels": [],
+      "maxResults": 50
+    },
+    "telegram": {
+      "enabled": false,
+      "channels": [],
+      "maxResults": 50
+    }
+  },
+  "aiProcessing": {
+    "enabled": false,
+    "targetLanguage": "zh-CN",
+    "targetPlatforms": ["xiaohongshu", "douyin", "kuaishou"]
+  }
+}

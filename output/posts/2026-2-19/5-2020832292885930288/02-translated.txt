@@ -1,0 +1,2 @@
+#PicoClaw：AI几小时就编出了代码，只用了#OpenClaw核心功能的1%代码和1%内存！别再用Mac Mini了——现在你可以在10美元的RISCV硬件上运行完整的AI助手，只要10MB内存！~ 如果它能运行Linux，现在就可以成为你的个人AI代理了！
+https://t.co/OF6rG9kgev https://t.co/iXAczSl7VN

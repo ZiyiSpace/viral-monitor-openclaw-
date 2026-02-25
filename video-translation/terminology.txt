@@ -1,0 +1,71 @@
+# ============================================
+# OpenClaw 术语保护表
+# 这些词汇不会被翻译，保持原样
+# ============================================
+
+# OpenClaw 相关
+OpenClaw
+PicoClaw
+openclaw
+picoclaw
+
+# AI/LLM 相关
+Claude
+GPT-SoVITS
+Whisper
+LLaMA
+Mistral
+ChatGPT
+
+# 开发工具
+GitHub
+Git
+Docker
+Kubernetes
+K8s
+
+# 技术术语
+API
+SDK
+CLI
+TTS
+ASR
+GPU
+CPU
+RAM
+SSD
+HDD
+VPN
+VPS
+SSH
+HTTP
+HTTPS
+JSON
+XML
+YAML
+
+# 编程语言/框架
+Python
+JavaScript
+TypeScript
+React
+Vue
+Node.js
+Rust
+Go
+
+# 云服务
+AWS
+Azure
+GCP
+Cloudflare
+
+# 其他品牌名
+Tesla
+SpaceX
+OpenAI
+Anthropic
+Google
+Microsoft
+Apple
+Meta

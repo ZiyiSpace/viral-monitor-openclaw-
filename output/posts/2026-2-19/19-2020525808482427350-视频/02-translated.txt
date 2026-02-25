@@ -1,0 +1,5 @@
+我的雷班meta眼镜里装了OpenClaw🦞
+
+语音和视觉由Gemini提供，由@openclaw执行代理操作
+
+非常感谢开源代码和灵感 @_seanliu 🤟🏻🫡 https://t.co/IiSGmGjyLS

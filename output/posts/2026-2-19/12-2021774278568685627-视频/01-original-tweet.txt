@@ -1,0 +1,16 @@
+OpenClaw just hit 185K stars. Everyone's deploying agents solo.
+
+We just shipped the first thing no one else built: Teams.
+
+Invite your cofounder. Share agents. Same dashboard, same logs, same controls.
+
+SpawnHQ — the first collaborative OpenClaw deployment platform.
+
+AI agents https://t.co/Yr4sr1s5GK
+
+Author: Michael Aubry (@michaelaubry)
+Created: Thu Feb 12 02:32:05 +0000 2026
+Views: 38,898
+Likes: 367
+Has Video: true
+Link: https://x.com/i/status/2021774278568685627

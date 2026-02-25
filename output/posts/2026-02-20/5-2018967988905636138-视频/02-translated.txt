@@ -1,0 +1,1 @@
+OpenClaw开发者Peter Steinberger：你很快就不需要App了。有一说一，现在的App确实非常臃肿，页面里全是各种复杂的菜单、会员、广告。Openclaw创始人预测的未来里，用户只用做一件事：说出你的需求，Agent就能现场为你造出一个专属工具。这就是我说的：所有的产品都值得用大模型重做一遍。 https://t.co/2gvOP1QJYK

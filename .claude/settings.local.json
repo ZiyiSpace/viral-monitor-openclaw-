@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "mcp__web-search-prime__webSearchPrime",
+      "Bash(node:*)"
+    ]
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "dangerously-skip-permissions": true,
+  "allow": [
+    "*"
+  ]
+}

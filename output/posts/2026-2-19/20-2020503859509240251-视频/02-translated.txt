@@ -1,0 +1,7 @@
+刚刚搭建了ClawMission 🦞
+
+这是我自主AI代理（OpenClaw）的指挥中心。通过WebSocket连接，可以实时可视化“大脑”的思考过程。
+
+不再有无聊的终端日志。龙虾复活了。
+
+#AI #OpenClaw #BuildInPublic https://t.co/TO3ZS2NNNP

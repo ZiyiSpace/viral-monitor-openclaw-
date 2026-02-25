@@ -1,0 +1,15 @@
+{
+  "title": "🔍 解决 #OpenClaw 内存问题的简单方法 🔍",
+  "content": "人们总是写5000字的文章来讨论解决#OpenClaw代理的内存/上下文问题。\n\n你不需要写论文。\n\n只需让代理定期更新其内存，或者设置一个cron任务来按节奏执行，就能解决所有内存问题。https://t.co/2dgYeKc7Mb\n\n你将不会有任何内存问题。https://t.co/x6rYUuJ4rS\n\n\n转自 twitter @SCRIBE 🖋️\n\n\n解决#OpenClaw代理的内存/上下文问题其实很简单，只需定期更新内存或设置cron任务。这不仅节省了时间，还能确保系统稳定运行。对于程序员来说，这是一个实用的解决方案。\n\n#OpenClaw #AI工具 #Claude #安全 #网络安全 #运维 #程序员 #GitHub #提示词",
+  "tags": [
+    "#OpenClaw",
+    "#AI工具",
+    "#Claude",
+    "#安全",
+    "#网络安全",
+    "#运维",
+    "#程序员",
+    "#GitHub",
+    "#提示词"
+  ]
+}

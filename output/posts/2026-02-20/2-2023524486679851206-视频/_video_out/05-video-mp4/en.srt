@@ -1,0 +1,79 @@
+1
+00:00:00,112 --> 00:00:03,488
+Okay folks, things are moving so fast.
+
+2
+00:00:03,824 --> 00:00:09,248
+This is open claw meets 3D printing. So we got the kids a bamboo.
+
+3
+00:00:09,584 --> 00:00:15,584
+machine for Christmas. I mean, it's for the whole family and I use it a ton. But in spirit, it was like for the kids.
+
+4
+00:00:15,600 --> 00:00:21,600
+like for education for you know learning about like 3d printing so uh we've
+
+5
+00:00:21,616 --> 00:00:25,568
+so many prints but from the bamboo marketplace which has a lot of options
+
+6
+00:00:26,160 --> 00:00:32,159
+I saw recently, though, that the new Gemini DeepThink model, I think 3, can generate STL 5.
+
+7
+00:00:32,176 --> 00:00:38,176
+So I got an API key for that and gave it to one of my open clause that I'm making more technical.
+
+8
+00:00:38,192 --> 00:00:44,192
+Cole. So Cole, who is an open claw, I wanted him to control the machine and this print
+
+9
+00:00:44,208 --> 00:00:50,208
+is finally being sent to the machine by Cole instead of me, okay? So this is Cole controlling the machine.
+
+10
+00:00:50,224 --> 00:00:54,240
+And I have Cole generating his own STL files.
+
+11
+00:00:54,688 --> 00:01:00,688
+And my goal here is that Cole can then communicate with my open claw who manages my homeschool.
+
+12
+00:01:00,704 --> 00:01:06,704
+curriculum and see all of the lessons I have planned for like the next week or so and choose to print
+
+13
+00:01:06,720 --> 00:01:12,720
+something in the 3d world that's useful to that lesson so let's say well this week for instance
+
+14
+00:01:12,736 --> 00:01:18,736
+for science we're teaching um like the bones and muscles how muscles pull on bones and joints so
+
+15
+00:01:18,752 --> 00:01:24,752
+So I'm going like, so what if, and I just need to figure out if Cole can actually generate like how good his STL files from Germany can.
+
+16
+00:01:24,768 --> 00:01:30,768
+gemini can be because this is more of like a simple thing but if coal can generate like an example of a
+
+17
+00:01:30,784 --> 00:01:36,784
+like two bones connected, then he could actually print a model for the kids that I pull out.
+
+18
+00:01:36,800 --> 00:01:42,800
+and use for that lesson. So that's where I'm trying to go like a next level, like bringing some of these things.
+
+19
+00:01:42,816 --> 00:01:48,816
+into the real world giving my open clause like real world clause so we'll see how it goes
+
+20
+00:01:48,832 --> 00:01:56,688
+I've proven that Cole at OpenClaw can use the machine, but can he generate brilliant files? Time will tell.

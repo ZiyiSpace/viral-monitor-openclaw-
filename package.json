@@ -1,0 +1,27 @@
+{
+  "name": "twitter-viral-monitor",
+  "version": "1.0.0",
+  "description": "Monitor Twitter for viral posts about specific keywords",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "monitor": "tsx src/index.ts monitor",
+    "stats": "tsx src/index.ts stats",
+    "publish": "tsx src/index.ts publish",
+    "xhs-status": "tsx src/index.ts xhs-status"
+  },
+  "dependencies": {
+    "@cm-growth-hacking/twitter-client": "latest",
+    "discord.js": "^14.25.1",
+    "dotenv": "^16.4.5",
+    "snoowrap": "^1.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/snoowrap": "^1.19.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "skipDangerousModePermissionPrompt": true,
+  "dangerously-skip-permissions": true,
+  "allow": [
+    "*"
+  ],
+  "permissions": {
+    "allow": [
+      "Bash(/opt/homebrew/bin/node:*)"
+    ]
+  }
+}
