@@ -7,7 +7,6 @@
     },
     "reddit": {
       "enabled": true,
-      "subreddits": ["all", "technology", "cryptocurrency"],
       "maxResults": 100,
       "viralThresholds": {
         "minUpvotes": 100,

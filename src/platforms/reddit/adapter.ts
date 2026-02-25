@@ -59,77 +59,51 @@ export class RedditAdapter extends BasePlatformAdapter {
     options: FetchOptions = {}
   ): Promise<RawContent[]> {
     const maxResults = options.maxResults || 100;
-    const subreddits = options.subreddits || ['all'];
 
     // 构建搜索关键词列表（query 参数 + 配置的 keywords）
-    const searchKeywords = this.keywords.length > 0 ? this.keywords : [query];
-    // 如果传入了 query 但 keywords 为空，使用 query 作为搜索词
     const keywords = query ? [query, ...this.keywords] : this.keywords;
 
     const contents: RawContent[] = [];
 
-    for (const subreddit of subreddits) {
-      try {
-        // 使用 Reddit 公开 API 获取热门帖子
-        const url = `https://old.reddit.com/r/${subreddit}/hot.json?limit=${maxResults}`;
-        const response = await fetch(url, {
-          headers: {
-            'User-Agent': 'OpenClawMonitor/1.0',
-          },
-        });
+    try {
+      // 使用 Reddit 搜索 API（不是热门帖子 API）
+      // 搜索 API 可以按关键词搜索，而不是只返回热门内容
+      const searchQuery = keywords.join('+');
 
-        if (!response.ok) {
-          console.warn(`Reddit API returned ${response.status} for r/${subreddit}`);
-          continue;
-        }
+      // 时间范围：week（最近一周）
+      // 排序：relevance（相关性）
+      const url = `https://old.reddit.com/search.json?q=${encodeURIComponent(searchQuery)}&sort=relevance&t=week&limit=${maxResults}`;
 
-        const data = await response.json();
+      const response = await fetch(url, {
+        headers: {
+          'User-Agent': 'OpenClawMonitor/1.0',
+        },
+      });
 
-        if (data.data && data.data.children) {
-          for (const child of data.data.children) {
-            const post = child.data as RedditPost;
-
-            // 过滤 NSFW 内容
-            if (post.over_18) {
-              continue;
-            }
-
-            // 客户端关键词过滤：标题或正文必须包含至少一个关键词
-            if (keywords.length > 0 && !this.matchesKeywords(post, keywords)) {
-              continue;
-            }
-
-            contents.push(this.transformToRawContent(post));
-          }
-        }
-
-        // 匿名模式有速率限制，添加延迟
-        if (subreddits.indexOf(subreddit) < subreddits.length - 1) {
-          await this.delay(1000); // 1秒延迟，避免超过 10 req/min
-        }
-      } catch (error) {
-        console.error(`Error fetching from r/${subreddit}:`, error);
+      if (!response.ok) {
+        console.warn(`Reddit search API returned ${response.status}`);
+        return contents;
       }
+
+      const data = await response.json();
+
+      if (data.data && data.data.children) {
+        for (const child of data.data.children) {
+          const post = child.data as RedditPost;
+
+          // 过滤 NSFW 内容
+          if (post.over_18) {
+            continue;
+          }
+
+          contents.push(this.transformToRawContent(post));
+        }
+      }
+    } catch (error) {
+      console.error('Error searching Reddit:', error);
     }
 
     return contents;
-  }
-
-  /**
-   * 检查帖子是否匹配关键词
-   */
-  private matchesKeywords(post: RedditPost, keywords: string[]): boolean {
-    if (keywords.length === 0) return true;
-
-    const text = (post.title + ' ' + (post.selftext || '')).toLowerCase();
-
-    // 检查是否匹配任意关键词（不区分大小写）
-    return keywords.some(keyword => {
-      const kw = keyword.toLowerCase();
-      // 处理带 # 号的关键词（如 #openclaw）
-      const cleanKw = kw.replace(/^#/, '');
-      return text.includes(kw) || text.includes(cleanKw);
-    });
   }
 
   /**
@@ -193,12 +167,5 @@ export class RedditAdapter extends BasePlatformAdapter {
     }
 
     return media.length > 0 ? media : undefined;
-  }
-
-  /**
-   * 延迟函数（用于速率限制）
-   */
-  private delay(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
