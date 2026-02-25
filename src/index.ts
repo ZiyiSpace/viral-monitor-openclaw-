@@ -42,6 +42,10 @@ async function main() {
       await runPublish(args[1]);
       break;
 
+    case 'prepare':
+      await runPrepare(args[1]);
+      break;
+
     case 'xhs-status':
       await checkXiaohongshuStatus();
       break;
@@ -223,6 +227,19 @@ async function runPublish(date?: string) {
 }
 
 /**
+ * 运行内容准备命令（AI 处理 + 格式化）
+ */
+async function runPrepare(date?: string) {
+  const { publishCommand } = await import('./commands/publish.js');
+  await publishCommand({
+    date,
+    platform: 'all',
+    aiProvider: 'glm',
+    topN: 10,
+  });
+}
+
+/**
  * 显示统计信息
  */
 async function showStats(date?: string) {
@@ -339,27 +356,22 @@ function showHelp() {
   console.log('命令:');
   console.log('  monitor              执行监控任务');
   console.log('  stats [date]         显示统计信息 (默认今天)');
-  console.log('  publish [date]       发布爆款到小红书 (默认今天)');
+  console.log('  publish [date]       发布爆款到小红书 (默认今天，旧格式)');
+  console.log('  prepare [date]       AI处理爆款内容，生成多平台格式 (默认今天)');
   console.log('  xhs-status           检查小红书登录状态');
-  console.log('  multi [keywords]     多平台监控 (Twitter, Reddit, Discord)');
+  console.log('  multi [keywords]     多平台监控 (Twitter, Reddit)');
   console.log('  help                 显示帮助信息');
   console.log('');
   console.log('示例:');
-  console.log('  npm run monitor              # 监控 Twitter');
-  console.log('  npm run dev stats            # 查看今天统计');
-  console.log('  npm run dev stats 2026-02-18 # 查看指定日期');
-  console.log('  npm run dev publish          # 发布今天爆款到小红书');
-  console.log('  npm run dev xhs-status       # 检查小红书登录状态');
-  console.log('  npm run dev multi            # 多平台监控（使用配置关键词）');
-  console.log('  npm run dev multi openclaw   # 多平台监控指定关键词');
+  console.log('  npm run dev multi            # 多平台监控');
+  console.log('  npm run dev prepare          # AI处理今天爆款，生成发布内容');
+  console.log('  npm run dev prepare 2026-02-24 # 处理指定日期的爆款');
   console.log('');
   console.log('环境变量:');
   console.log('  TWITTER_AUTH_TOKEN  Twitter auth_token (必填)');
   console.log('  TWITTER_CT0         Twitter ct0 token (必填)');
-  console.log('  REDDIT_CLIENT_ID    Reddit client ID (可选)');
-  console.log('  REDDIT_CLIENT_SECRET Reddit client secret (可选)');
-  console.log('  DISCORD_BOT_TOKEN   Discord bot token (可选)');
-  console.log('  ANTHROPIC_API_KEY   Claude API key (AI翻译，可选)');
+  console.log('  GLM_API_KEY         智谟 GLM-4 API key (AI处理，必填)');
+  console.log('  ANTHROPIC_API_KEY   Claude API key (AI处理，可选)');
   console.log('  DATA_DIR            数据目录 (默认: ./data)');
   console.log('');
   console.log('发布前准备:');

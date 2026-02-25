@@ -130,12 +130,12 @@ export class ContentScheduler {
    * 保存：爆款 + 最近 5 天内的内容
    */
   private shouldSave(content: RawContent): boolean {
-    // 如果是爆款，直接保存
-    if (content.isViral) {
-      return true;
+    // 必须是爆款
+    if (!content.isViral) {
+      return false;
     }
 
-    // 检查是否在最近 5 天内
+    // 必须在最近 5 天内
     const contentDate = new Date(content.createdAt);
     const fiveDaysAgo = new Date();
     fiveDaysAgo.setDate(fiveDaysAgo.getDate() - 5);
