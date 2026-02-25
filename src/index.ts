@@ -16,6 +16,16 @@ const __dirname = path.dirname(__filename);
  */
 async function main() {
   const args = process.argv.slice(2);
+  const input = args.join(' ');
+
+  // 尝试自然语言解析
+  const nlResult = parseNaturalLanguage(input);
+  if (nlResult.isNaturalLanguage) {
+    await runMultiPlatform(nlResult.keywords, { topN: nlResult.topN });
+    return;
+  }
+
+  // 传统命令模式
   const command = args[0] || 'help';
 
   switch (command) {
@@ -49,6 +59,45 @@ async function main() {
       showHelp();
       process.exit(1);
   }
+}
+
+/**
+ * 解析自然语言输入
+ */
+function parseNaturalLanguage(input: string): { isNaturalLanguage: boolean; keywords?: string[]; topN?: number } {
+  if (!input) return { isNaturalLanguage: false };
+
+  const lower = input.toLowerCase();
+
+  // 检测是否包含监控相关的意图词
+  const intentPatterns = [
+    /监控|检测|抓取|看看|查查|搜|search|monitor|detect|check/,
+    /爆款|热门|火|viral|hot|popular/,
+    /今天|今日|today|recent|latest/
+  ];
+
+  const hasIntent = intentPatterns.some(p => p.test(lower));
+
+  if (!hasIntent) return { isNaturalLanguage: false };
+
+  // 提取关键词
+  let keywords: string[] = [];
+
+  // 包含特定关键词
+  if (lower.includes('openclaw') || lower.includes('open claw')) {
+    keywords.push('openclaw', 'open claw', '#openclaw');
+  } else if (lower.includes('ai') || lower.includes('人工智能')) {
+    keywords.push('AI', 'artificial intelligence', 'LLM', 'GPT');
+  } else if (lower.includes('区块链') || lower.includes('blockchain') || lower.includes('crypto')) {
+    keywords.push('blockchain', 'crypto', 'web3');
+  }
+
+  // 如果没有识别到特定关键词，使用配置文件中的默认关键词
+  if (keywords.length === 0) {
+    return { isNaturalLanguage: true, keywords: undefined, topN: 10 };
+  }
+
+  return { isNaturalLanguage: true, keywords, topN: 10 };
 }
 
 /**
@@ -270,9 +319,9 @@ function getTierLabel(tier: string | null): string {
 /**
  * 运行多平台监控
  */
-async function runMultiPlatform(keywords?: string[]) {
+async function runMultiPlatform(keywords?: string[], options: { topN?: number } = {}) {
   const { monitorCommand } = await import('./commands/monitor.js');
-  await monitorCommand(keywords);
+  await monitorCommand(keywords, options);
 }
 
 /**
