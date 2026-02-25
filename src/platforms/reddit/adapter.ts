@@ -22,6 +22,7 @@ interface RedditConfig {
     minUpvotes?: number;
     minComments?: number;
   };
+  keywords?: string[];  // 关键词过滤列表
 }
 
 interface FetchOptions {
@@ -39,6 +40,7 @@ export class RedditAdapter extends BasePlatformAdapter {
     minUpvotes: 100,
     minComments: 20,
   };
+  private keywords: string[] = [];
 
   constructor(config: RedditConfig = {}) {
     super();
@@ -46,6 +48,7 @@ export class RedditAdapter extends BasePlatformAdapter {
       minUpvotes: config.thresholds?.minUpvotes ?? 100,
       minComments: config.thresholds?.minComments ?? 20,
     };
+    this.keywords = config.keywords || [];
   }
 
   /**
@@ -57,6 +60,11 @@ export class RedditAdapter extends BasePlatformAdapter {
   ): Promise<RawContent[]> {
     const maxResults = options.maxResults || 100;
     const subreddits = options.subreddits || ['all'];
+
+    // 构建搜索关键词列表（query 参数 + 配置的 keywords）
+    const searchKeywords = this.keywords.length > 0 ? this.keywords : [query];
+    // 如果传入了 query 但 keywords 为空，使用 query 作为搜索词
+    const keywords = query ? [query, ...this.keywords] : this.keywords;
 
     const contents: RawContent[] = [];
 
@@ -86,6 +94,11 @@ export class RedditAdapter extends BasePlatformAdapter {
               continue;
             }
 
+            // 客户端关键词过滤：标题或正文必须包含至少一个关键词
+            if (keywords.length > 0 && !this.matchesKeywords(post, keywords)) {
+              continue;
+            }
+
             contents.push(this.transformToRawContent(post));
           }
         }
@@ -100,6 +113,23 @@ export class RedditAdapter extends BasePlatformAdapter {
     }
 
     return contents;
+  }
+
+  /**
+   * 检查帖子是否匹配关键词
+   */
+  private matchesKeywords(post: RedditPost, keywords: string[]): boolean {
+    if (keywords.length === 0) return true;
+
+    const text = (post.title + ' ' + (post.selftext || '')).toLowerCase();
+
+    // 检查是否匹配任意关键词（不区分大小写）
+    return keywords.some(keyword => {
+      const kw = keyword.toLowerCase();
+      // 处理带 # 号的关键词（如 #openclaw）
+      const cleanKw = kw.replace(/^#/, '');
+      return text.includes(kw) || text.includes(cleanKw);
+    });
   }
 
   /**

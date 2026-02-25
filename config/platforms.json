@@ -15,7 +15,7 @@
       }
     },
     "discord": {
-      "enabled": true,
+      "enabled": false,
       "channels": ["1464399979576823861"],
       "maxResults": 50
     },

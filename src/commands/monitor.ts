@@ -32,6 +32,7 @@ export async function monitorCommand(keywords?: string[], options: { topN?: numb
   if (platformsConfig.platforms.reddit.enabled) {
     adapters.push(new RedditAdapter({
       thresholds: platformsConfig.platforms.reddit.viralThresholds,
+      keywords: searchKeywords,  // 传递搜索关键词
     }));
   }
 
