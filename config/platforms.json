@@ -15,8 +15,8 @@
       }
     },
     "discord": {
-      "enabled": false,
-      "channels": [],
+      "enabled": true,
+      "channels": ["1464399979576823861"],
       "maxResults": 50
     },
     "telegram": {

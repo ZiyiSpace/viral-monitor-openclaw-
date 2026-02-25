@@ -12,7 +12,8 @@ interface ScoredContent {
 }
 
 export async function monitorCommand(keywords?: string[], options: { topN?: number } = {}) {
-  const searchKeywords = keywords || platformsConfig.keywords;
+  // 如果 keywords 是空数组或 undefined，使用配置文件中的默认关键词
+  const searchKeywords = keywords && keywords.length > 0 ? keywords : platformsConfig.keywords;
   const topN = options.topN || 10;
 
   const repo = new JsonContentRepository('./data');
@@ -30,9 +31,7 @@ export async function monitorCommand(keywords?: string[], options: { topN?: numb
 
   if (platformsConfig.platforms.reddit.enabled) {
     adapters.push(new RedditAdapter({
-      clientId: process.env.REDDIT_CLIENT_ID || '',
-      clientSecret: process.env.REDDIT_CLIENT_SECRET || '',
-      userAgent: 'OpenClawMonitor/1.0',
+      thresholds: platformsConfig.platforms.reddit.viralThresholds,
     }));
   }
 

@@ -321,7 +321,9 @@ function getTierLabel(tier: string | null): string {
  */
 async function runMultiPlatform(keywords?: string[], options: { topN?: number } = {}) {
   const { monitorCommand } = await import('./commands/monitor.js');
-  await monitorCommand(keywords, options);
+  // 如果 keywords 是空数组，传 undefined 让 monitorCommand 使用默认配置
+  const actualKeywords = keywords && keywords.length > 0 ? keywords : undefined;
+  await monitorCommand(actualKeywords, options);
 }
 
 /**

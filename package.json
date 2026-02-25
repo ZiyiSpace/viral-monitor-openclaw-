@@ -15,8 +15,7 @@
   "dependencies": {
     "@cm-growth-hacking/twitter-client": "latest",
     "discord.js": "^14.25.1",
-    "dotenv": "^16.4.5",
-    "snoowrap": "^1.23.0"
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
