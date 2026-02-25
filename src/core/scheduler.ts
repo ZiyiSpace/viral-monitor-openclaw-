@@ -127,19 +127,9 @@ export class ContentScheduler {
 
   /**
    * 判断是否应该保存该内容
-   * 只保存：爆款 + 最近 3 天内的内容
+   * 只保存爆款内容
    */
   private shouldSave(content: RawContent): boolean {
-    // 如果是爆款，直接保存
-    if (content.isViral) {
-      return true;
-    }
-
-    // 检查是否在最近 3 天内
-    const contentDate = new Date(content.createdAt);
-    const threeDaysAgo = new Date();
-    threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
-
-    return contentDate >= threeDaysAgo;
+    return content.isViral;
   }
 }
